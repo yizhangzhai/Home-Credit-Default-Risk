@@ -13,7 +13,7 @@ This project contains multiple relational datasets from difference sources, such
 
 This is a binary classification project, where 8% borrowers could not afford their loans. And the metrics is ROC, which is a standard for binary and imbalance classification problem.
 
-Per modeling, based on my working experience in building risk models in bank, I have done series of feature engineering related to borrowers application financial status and their belonging to some specific segments. The most important ones are those corresponding to borrowers' utilization, the interest rates, etc..; I also focus on precise aggregation on those transactional data to capture the behavior patterns of borrowers, like how they managed their single/multiple loans and how they did repayments.
+Per modeling, based on my working experience in building risk models in bank, I have done series of feature engineering related to borrowers application financial status and their belonging to some specific segments. The most important ones are those corresponding to borrowers' utilization, the interest rates, dlinquent status, etc..; I also focus on precise aggregation on those transactional data to capture the behavior patterns of borrowers, like how they managed their single/multiple loans and how they did repayments.
 
 In terms of models, my champion models rely on lightgbm and I also built deep learning models (DNN, Entity Embedding, CNN/LSTM) to solve this complicated problem.
 
