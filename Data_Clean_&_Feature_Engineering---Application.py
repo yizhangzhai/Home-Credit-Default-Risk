@@ -132,19 +132,15 @@ def variable_pre_selection(data):
 
     return importance_df, _list_
 
+### main
+application_train = pd.read_csv('application_train.csv')
+application_test = pd.read_csv('application_test.csv')
+all = pd.concat([application_train,application_test],axis=0).sort_values(by=['SK_ID_CURR'])
+del all['TARGET']
+TARGET = pd.concat([application_train[['SK_ID_CURR','TARGET']],application_test[['SK_ID_CURR']]],axis=0).sort_values(by=['SK_ID_CURR'])
 
-def main():
-    application_train = pd.read_csv('../data/application_train.csv')
-    application_test = pd.read_csv('../data/application_test.csv')
-    all = pd.concat([application_train,application_test],axis=0).sort_values(by=['SK_ID_CURR'])
-    del all['TARGET']
-    TARGET = pd.concat([application_train[['SK_ID_CURR','TARGET']],application_test[['SK_ID_CURR']]],axis=0).sort_values(by=['SK_ID_CURR'])
-
-    all = data_impute(all)
-    all = Feature_Engineering(all)
-    importance_df, _list_ = variable_pre_selection(all) # Evaluate and filter variables
-    _list_.append('SK_ID_CURR')
-    all[_list_].to_pickle('../data/application.pkl')
-
-if __name__ == '__main__':
-        main()
+all = data_impute(all)
+all = Feature_Engineering(all)
+importance_df, _list_ = variable_pre_selection(all) # Evaluate and filter variables
+_list_.append('SK_ID_CURR')
+all[_list_].to_pickle('application.pkl')

@@ -119,18 +119,16 @@ def Feature_selection(previous_cat,previous_cat):
     return previous[update_list]
 
 
-def main():
-    application_train = pd.read_csv('application_train.csv')
-    application_test = pd.read_csv('application_test.csv')
 
-    all = pd.concat([application_train,application_test],axis=0)
-    TARGET = pd.concat([application_train[['SK_ID_CURR','TARGET']],application_test[['SK_ID_CURR']]],axis=0)
+### main
+application_train = pd.read_csv('application_train.csv')
+application_test = pd.read_csv('application_test.csv')
 
-    previous_application = pd.read_csv('previous_application.csv')
-    previous_application = Feature_Engineering(previous_application)
-    previous_cat = Cat_var(previous_application)
-    previous_cat = Num_var(previous_application)
-    previous = Feature_selection(previous_cat,previous_cat)
+all = pd.concat([application_train,application_test],axis=0)
+TARGET = pd.concat([application_train[['SK_ID_CURR','TARGET']],application_test[['SK_ID_CURR']]],axis=0)
 
-if __name__ == '__main__':
-        main()
+previous_application = pd.read_csv('previous_application.csv')
+previous_application = Feature_Engineering(previous_application)
+previous_cat = Cat_var(previous_application)
+previous_cat = Num_var(previous_application)
+previous = Feature_selection(previous_cat,previous_cat)
